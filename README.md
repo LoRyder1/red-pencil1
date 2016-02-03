@@ -1,3 +1,6 @@
+Red Pencil Kata
+===============
+
 At one of my clients I have seen a real feature request being used as a Code Kata. I found the feature description very interesting and created a Code Kata description from it:
 Red Pencil Code Kata
 
