@@ -27,4 +27,16 @@ describe 'Product' do
       expect(subject.discount_price(100,20)).to eq 80
     end
   end
+
+  describe '#add_duration' do
+    it 'add 20 days for product promo duration' do
+      subject.add_duration(20)
+      expect(subject.days).to eq 20
+    end
+
+    it 'promo duration of greater than 30 days cancels promo' do
+      subject.add_duration(31)
+      expect(subject.discount).to eq 0
+    end
+  end
 end
