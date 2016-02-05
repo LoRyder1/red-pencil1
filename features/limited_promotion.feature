@@ -14,3 +14,4 @@ I want to make sure a promotion lasts no longer than 30 days
   And I apply a discount of 25% to 100
   When the promotion runs for 31 days
   Then the price should be set to 100
+  
