@@ -11,6 +11,5 @@ Then(/^the price should be set to (\d+)$/) do |sale_price|
 end
 
 When(/^the promotion runs for (\d+) days$/) do |days|
-  # @shop = Shope.new
   @item.add_duration(days)
 end
