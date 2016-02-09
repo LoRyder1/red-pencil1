@@ -7,3 +7,8 @@ I want to reduce prices between 5% and 30%
   Given I have created a promotion with a price of 100
   When I apply a discount of 15% to 100
   Then the price should be set to 85
+
+  Scenario: Discount a product by 50%
+  Given I have created a promotion with a price of 100
+  When I apply a discount of 50% to 100
+  Then the price should be set to 100
