@@ -17,6 +17,7 @@ class Product
   end
 
   def discount_price original_price, discount
+    return original_price if discount < 5 || discount > 30
     amount_reduced = (original_price * discount.to_f / 100)
     @current_price = original_price - amount_reduced
     current_price
