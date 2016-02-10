@@ -30,4 +30,8 @@ class Product
       @current_price = @original_price
     end
   end
+
+  def increase_price
+    
+  end
 end
