@@ -30,6 +30,12 @@ describe 'Product' do
     it 'a 50% discount should not be discounted' do 
       expect(subject.discount_price(100,50)).to eq 100
     end
+
+    it 'a double discount of with greater than 30% ends promo' do
+      subject.discount_price(100,10)
+      subject.discount_price(90,30)
+      expect(subject.discount).to eq 0
+    end
   end
 
   describe '#add_duration' do
