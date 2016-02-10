@@ -46,8 +46,7 @@ describe 'Product' do
 
   describe '#increase_price' do
     it 'increasing price for product changes original_price' do
-      subject.increase_price(10)
-      expect(subject.current_price).to eq 100
+      expect(subject.increase_price(100,10)).to eq 110
     end
 
     it 'increasing price ends promotion'

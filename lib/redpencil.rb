@@ -31,7 +31,8 @@ class Product
     end
   end
 
-  def increase_price
-    
+  def increase_price price, increase
+    @current_price = price + increase
+    current_price
   end
 end
