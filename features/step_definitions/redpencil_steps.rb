@@ -1,5 +1,5 @@
 Given(/^I have created a promotion with a price of (\d+)$/) do |price|
-  @item = Product.new(price)
+  @item = Store.new(price)
 end
 
 When(/^I apply a discount of (\d+)% to (\d+)$/) do |discount, price|

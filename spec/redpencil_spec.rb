@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Product' do
   let(:price) { double('price') }
-  subject { Product.new(price) }
+  subject { Store.new(price) }
 
   describe '#valid_discount?' do
     it 'discount of 10% is valid' do
