@@ -1,0 +1,1 @@
+A **private method** is an implementation detail that should be hidden to users of the class. Testing private methods breaks encapsulation. But if you think implementation details are unimportant when and as long as the publice interface is well tested and working, but that would be correct if your only purpose for testing is to guarantee the public interface is works. 

@@ -7,19 +7,19 @@ class Product
     @discount = discount
   end
 
-  def valid_discount? discount
-    @discount = discount
-    if discount > 5 && discount < 30
+  def valid_discount? discnt
+    @discount = discnt
+    if discnt > 5 && discnt < 30
       true
     else
       false
     end
   end
 
-  def discount_price price, discount
-    return price if discount < 5 || discount > 30
-    amount_reduced = (price * discount.to_f / 100)
-    @current_price = price - amount_reduced
+  def discount_price price, discnt
+    return price if discnt < 5 || discnt > 30
+    @current_price = calc_current_price(price, discnt)
+    @discount = discnt
     end_promo if over_30_percent?
     current_price
   end
@@ -39,7 +39,11 @@ class Product
   end
 
   private
-  def over_30_percent? 
+  def calc_current_price price, discnt
+    price - (price * discnt.to_f / 100)
+  end
+
+  def over_30_percent?
     (original_price - current_price).to_f/100 > 30.to_f/100
   end
 
@@ -48,11 +52,3 @@ class Product
     @current_price = @original_price
   end
 end
-
-x = Product.new(100)
-p x.discount_price(100,10)
-p x.discount_price(90,30)
-p x.current_price
-# p x.valid_discount? 20
-p x.discount
-# p x.original_price

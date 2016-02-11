@@ -40,9 +40,17 @@ describe 'Product' do
     end
 
     it 'a double discount over 30 is invalid and ends promo' do
+      over_30 true
       subject.discount_price(100,10)
       subject.discount_price(90,30)
       expect(subject.discount).to eq 0
+    end
+
+    it 'a double discount under 30 is valid' do
+      over_30 false
+      subject.discount_price(100,10)
+      subject.discount_price(90,20)
+      expect(subject.discount).to eq 20
     end
   end
 
@@ -68,4 +76,22 @@ describe 'Product' do
       expect(subject.discount).to eq 0
     end
   end
+
+  
+  describe 'private methods' do
+    it '#calc_current_price' do
+      expect(subject.send(:calc_current_price, 100, 10)).to eq 90
+    end
+
+    it '#over_30_percent?' do
+      allow(subject).to receive_messages(original_price: 100, current_price: 65)
+      expect(subject.send(:over_30_percent?)).to eq true
+    end
+
+    it '#end_promo' do
+      subject.send(:end_promo)
+      expect(subject.discount).to eq 0
+    end
+  end
+
 end
