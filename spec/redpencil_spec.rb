@@ -39,7 +39,7 @@ describe 'Product' do
       expect(subject.discount_price(100,50)).to eq 100
     end
 
-    xit 'a double discount over 30 is invalid and ends promo' do
+    it 'a double discount over 30 is invalid and ends promo' do
       subject.discount_price(100,10)
       subject.discount_price(90,30)
       expect(subject.discount).to eq 0
