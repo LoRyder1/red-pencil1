@@ -77,7 +77,6 @@ describe 'Product' do
     end
   end
 
-  
   describe 'private methods' do
     it '#calc_current_price' do
       expect(subject.send(:calc_current_price, 100, 10)).to eq 90
@@ -93,5 +92,4 @@ describe 'Product' do
       expect(subject.discount).to eq 0
     end
   end
-
 end
