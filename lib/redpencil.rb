@@ -1,5 +1,5 @@
 class Product
-  attr_reader :current_price, :days, :discount
+  attr_reader :current_price, :days, :discount, :original_price
   def initialize original_price
     @original_price = original_price
     @current_price = original_price
@@ -14,12 +14,13 @@ class Product
     else
       false
     end
+    end_promo if over_30_percent?
   end
 
-  def discount_price original_price, discount
-    return original_price if discount < 5 || discount > 30
-    amount_reduced = (original_price * discount.to_f / 100)
-    @current_price = original_price - amount_reduced
+  def discount_price price, discount
+    return price if discount < 5 || discount > 30
+    amount_reduced = (price * discount.to_f / 100)
+    @current_price = price - amount_reduced
     current_price
   end
 
@@ -36,4 +37,22 @@ class Product
     @discount = 0
     current_price
   end
+
+  private
+  def over_30_percent? 
+    (original_price - current_price).to_f/100 > 30.to_f/100
+  end
+
+  def end_promo
+    @discount = 0
+    @current_price = @original_price
+  end
 end
+
+x = Product.new(100)
+p x.discount_price(100,10)
+p x.discount_price(90,30)
+p x.current_price
+p x.valid_discount? 20
+p x.discount
+# p x.original_price
