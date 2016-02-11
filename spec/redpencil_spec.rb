@@ -16,19 +16,33 @@ describe 'Product' do
     it 'discount of 31% is invalid' do
       expect(subject.valid_discount?(31)).to eq false
     end
+
   end
 
   describe '#discount_price' do 
+    def over_30 boolean
+      allow(subject).to receive_messages(over_30_percent?: boolean)
+    end
+
     it 'a 10% discount should reduce the price appropriately' do
+      over_30 false
       expect(subject.discount_price(100,10)).to eq 90
     end
 
     it 'a 20% discount should reduce the price appropriately' do
+      over_30 false
       expect(subject.discount_price(100,20)).to eq 80
     end
 
-    it 'a 50% discount should not be discounted' do 
+    it 'a 50% discount should not be discounted' do
+      over_30 true
       expect(subject.discount_price(100,50)).to eq 100
+    end
+
+    xit 'a double discount over 30 is invalid and ends promo' do
+      subject.discount_price(100,10)
+      subject.discount_price(90,30)
+      expect(subject.discount).to eq 0
     end
   end
 

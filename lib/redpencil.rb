@@ -14,13 +14,13 @@ class Product
     else
       false
     end
-    end_promo if over_30_percent?
   end
 
   def discount_price price, discount
     return price if discount < 5 || discount > 30
     amount_reduced = (price * discount.to_f / 100)
     @current_price = price - amount_reduced
+    end_promo if over_30_percent?
     current_price
   end
 
@@ -53,6 +53,6 @@ x = Product.new(100)
 p x.discount_price(100,10)
 p x.discount_price(90,30)
 p x.current_price
-p x.valid_discount? 20
+# p x.valid_discount? 20
 p x.discount
 # p x.original_price
