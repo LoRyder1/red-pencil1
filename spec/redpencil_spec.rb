@@ -1,5 +1,4 @@
 require 'spec_helper'
-
 describe 'Product' do
   let(:price) { double('price') }
   subject { Store.new(price) }

@@ -52,17 +52,15 @@ class RedPencilPromo
   end
 
   def increase_price amount
-    # binding.pry
     end_promo
-    promo_price += amount
+    @promo_price += amount
   end
 
   def decrease_price amount
-    promo_price -= amount
+    @promo_price -= amount
   end
 
   def sale_under_limit?
-    # binding.pry
     promo_length <= 30
   end
 
@@ -71,9 +69,10 @@ class RedPencilPromo
   end
 end
 
-@chair = RedPencilPromo.new(80,10,100,31)
+# Is overall discount too much? then end promo
+# @chair = RedPencilPromo.new(80,10,100,31)
 # p @chair.promo_price
-p @chair.increase_price(10)
+# p @chair.increase_price(10)
 # p @chair.promo_price
 # p @chair.decrease_price(10)
 # p @chair.promo_price
