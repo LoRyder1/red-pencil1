@@ -82,6 +82,20 @@ describe 'RedPencilPromo' do
       expect(subject.promo_valid).to eq false
     end
   end
+
+  describe '#valid?' do
+    it 'is promo valid?' do
+      enable('stable_and_on_sale?', true); enable('promo_in_range?', true)
+      enable('sale_under_limit?', true); enable('promo_valid', true)
+      expect(subject.valid?).to eq true
+    end
+
+    it 'is promo valid? x2' do
+      enable('stable_and_on_sale?', true); enable('promo_in_range?', true)
+      enable('sale_under_limit?', false); enable('promo_valid', true)
+      expect(subject.valid?).to eq false
+    end
+  end
 end
 
 describe 'Product' do
