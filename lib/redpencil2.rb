@@ -1,5 +1,9 @@
 require 'pry'
 
+MAX_DAYS = 30
+MAX_PERCENT = 30
+MIN_PERCENT = 5
+
 class Product
   attr_reader :price, :stability
   def initialize price, stability
@@ -11,7 +15,7 @@ class Product
   end
 
   def price_stable?
-    stability >= 30
+    stability >= MAX_DAYS
   end
 
   def on_sale? promo_price
@@ -48,7 +52,7 @@ class RedPencilPromo
   end
 
   def promo_in_range?
-    percent_reduced.between?(5,30)
+    percent_reduced.between?(MIN_PERCENT,MAX_PERCENT)
   end
 
   def increase_price amount
@@ -61,7 +65,7 @@ class RedPencilPromo
   end
 
   def sale_under_limit?
-    promo_length <= 30
+    promo_length <= MAX_DAYS
   end
 
   def end_promo
