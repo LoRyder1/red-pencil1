@@ -77,7 +77,10 @@ describe 'RedPencilPromo' do
   end
 
   describe '#end_promo' do
-    it 'promo becomes no longer valid'
+    it 'promo becomes no longer valid' do
+      subject.end_promo
+      expect(subject.promo_valid).to eq false
+    end
   end
 end
 
