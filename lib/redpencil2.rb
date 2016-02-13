@@ -72,16 +72,3 @@ class RedPencilPromo
     @promo_valid = false 
   end
 end
-
-# Is overall discount too much? then end promo
-# @chair = RedPencilPromo.new(80,10,100,31)
-# p @chair.promo_price
-# p @chair.increase_price(10)
-# p @chair.promo_price
-# p @chair.decrease_price(10)
-# p @chair.promo_price
-# p @chair.sale_under_limit?
-
-# p @chair.promo_price
-# p @chair.stable_and_on_sale?
-# p RedPencilPromo.new(80,10,100,31).valid?
