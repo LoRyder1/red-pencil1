@@ -1,3 +1,5 @@
+require 'pry'
+
 class Product
   attr_reader :price, :stability
   def initialize price, stability
@@ -50,15 +52,17 @@ class RedPencilPromo
   end
 
   def increase_price amount
-    promo_price += amount
+    # binding.pry
     end_promo
+    promo_price += amount
   end
 
   def decrease_price amount
-    promo_price += amount
+    promo_price -= amount
   end
 
   def sale_under_limit?
+    # binding.pry
     promo_length <= 30
   end
 
@@ -68,5 +72,15 @@ class RedPencilPromo
 end
 
 @chair = RedPencilPromo.new(80,10,100,31)
-p @chair.valid?
+# p @chair.promo_price
+p @chair.increase_price(10)
+# p @chair.promo_price
+# p @chair.decrease_price(10)
+# p @chair.promo_price
+# p @chair.sale_under_limit?
+
+
+
+# p @chair.promo_price
 # p @chair.stable_and_on_sale?
+# p RedPencilPromo.new(80,10,100,31).valid?
