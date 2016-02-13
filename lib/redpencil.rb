@@ -30,8 +30,9 @@ class Store
   def add_duration days
     @days += days
     if days > 30
-      @discount = 0
-      @current_price = @original_price
+      # @discount = 0
+      # @current_price = @original_price
+      end_promo
     end
   end
 
@@ -55,19 +56,3 @@ class Store
     @current_price = @original_price
   end
 end
-
-# class Product
-#   attr_reader :original_price, :current_price
-#   def initialize original_price
-#     @original_price = original_price
-#     @current_price = original_price
-#   end
-
-#   def calc_current_price price, discnt
-#     price - (price * discnt.to_f / 100)
-#   end
-
-#   def over_30_percent?
-#     (original_price - current_price).to_f/100 > 30.to_f/100
-#   end
-# end
