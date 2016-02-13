@@ -49,6 +49,36 @@ describe 'RedPencilPromo' do
       expect(subject.promo_in_range?).to eq false
     end
   end
+
+  describe '#increase_price, #decrease_price' do
+    let(:num) {50}
+
+    it 'increases promo price' do
+      subject.increase_price(10)
+      expect(subject.promo_price).to eq 60
+    end
+
+    it 'increases in promo price ends promo' do
+      subject.increase_price(10)
+      expect(subject.promo_valid).to eq false
+    end
+
+    it 'decreases promo price' do
+      subject.decrease_price(10)
+      expect(subject.promo_price).to eq 40
+    end
+  end
+
+  describe '#sale_under_limit?' do
+    it 'sale has max number of days' do
+      enable('promo_length',31)
+      expect(subject.sale_under_limit?).to eq false
+    end
+  end
+
+  describe '#end_promo' do
+    it 'promo becomes no longer valid'
+  end
 end
 
 describe 'Product' do

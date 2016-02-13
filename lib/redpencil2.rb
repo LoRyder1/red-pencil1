@@ -56,8 +56,8 @@ class RedPencilPromo
   end
 
   def increase_price amount
-    end_promo
     @promo_price += amount
+    end_promo
   end
 
   def decrease_price amount
@@ -69,7 +69,7 @@ class RedPencilPromo
   end
 
   def end_promo
-    promo_valid = false 
+    @promo_valid = false 
   end
 end
 
@@ -81,8 +81,6 @@ end
 # p @chair.decrease_price(10)
 # p @chair.promo_price
 # p @chair.sale_under_limit?
-
-
 
 # p @chair.promo_price
 # p @chair.stable_and_on_sale?
