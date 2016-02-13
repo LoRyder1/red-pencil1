@@ -4,8 +4,8 @@ describe 'RedPencilPromo' do
   let(:num) {double('num')}
   subject {RedPencilPromo.new(num, num, num, num)}
 
-  def calc_percent_reduced percent
-    allow(subject.product).to receive(:percent_reduced).and_return(percent)
+  def product_enable method, result
+    allow(subject.product).to receive(method.to_sym).and_return(result)
   end
 
   it 'expect 4 arguments' do
@@ -22,10 +22,19 @@ describe 'RedPencilPromo' do
     end
 
     it 'calculate percent_reduced' do
-      calc_percent_reduced 9
+      product_enable('percent_reduced', 9)
       expect(subject.percent_reduced).to eq 9
     end
   end
+
+  describe '#stable_and_on_sale?' do
+    it 'is product stable and on sale' do
+      product_enable('stable_and_on_sale?', true)
+      expect(subject.stable_and_on_sale?).to eq true
+    end
+  end
+
+  describe ''
 end
 
 describe 'Product' do
