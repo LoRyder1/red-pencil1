@@ -8,6 +8,10 @@ describe 'RedPencilPromo' do
     allow(subject.product).to receive(method.to_sym).and_return(result)
   end
 
+  def enable method, result
+    allow(subject).to receive(method.to_sym).and_return(result)    
+  end
+
   it 'expect 4 arguments' do
     expect(subject.method(:initialize).arity).to eq 4
   end
@@ -34,7 +38,17 @@ describe 'RedPencilPromo' do
     end
   end
 
-  describe ''
+  describe '#promo_in_range?' do
+    it 'is promo less than 30 and greater than 5' do
+      enable('percent_reduced', 20)
+      expect(subject.promo_in_range?).to eq true
+    end
+
+    it 'out of range promo equals false' do
+      enable('percent_reduced', 31)
+      expect(subject.promo_in_range?).to eq false
+    end
+  end
 end
 
 describe 'Product' do
