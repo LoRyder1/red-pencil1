@@ -1,8 +1,8 @@
 Given(/^I have created a promotion with a price of (\d+)$/) do |price|
-  @chair = RedPencilPromo.new(80,15,100,31)
+  @chair = RedPencilPromo.new(price,15,price,31)
 end
 
-When(/^I apply a discount of (\d+)% to (\d+)$/) do |discount, price|
+When(/^I apply a discount of (\d+)$/) do |amount|
   @chair.decrease_price(amount)
 end
 
@@ -10,6 +10,10 @@ Then(/^the price should be set to (\d+)$/) do |sale_price|
   expect(@chair.promo_price).to eq sale_price
 end
 
-When(/^the promotion runs for (\d+) days$/) do |days|
-  @item.add_duration(days)
+And(/^the promo should be valid$/) do 
+  expect(@chair.valid?).to eq true
 end
+
+# When(/^the promotion runs for (\d+) days$/) do |days|
+#   @item.add_duration(days)
+# end
