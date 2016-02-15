@@ -32,7 +32,8 @@ class Product
 end
 
 class RedPencilPromo
-  attr_reader :promo_price, :promo_length, :product, :promo_valid
+  attr_reader :promo_price, :product, :promo_valid
+  attr_accessor :promo_length
   def initialize promo_price, promo_length, price, stability
     @promo_price, @promo_length = promo_price, promo_length
     @product = Product.new(price, stability)

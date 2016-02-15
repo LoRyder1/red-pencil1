@@ -1,5 +1,5 @@
 Given(/^I have created a promotion with a price of (\d+)$/) do |price|
-  @chair = RedPencilPromo.new(price,15,price,31)
+  @chair = RedPencilPromo.new(price,0,price,31)
 end
 
 When(/^I apply a discount of (\d+)$/) do |amount|
@@ -14,6 +14,6 @@ And(/^the promo should be (\S[a-z]*)$/) do |boolean|
   expect(@chair.valid?).to eq boolean
 end
 
-# When(/^the promotion runs for (\d+) days$/) do |days|
-#   @item.add_duration(days)
-# end
+When(/^the promotion runs for (\d+) days$/) do |days|
+  @chair.promo_length = days
+end
