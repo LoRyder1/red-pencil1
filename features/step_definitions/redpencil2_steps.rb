@@ -10,8 +10,13 @@ Then(/^the price should be set to (\d+)$/) do |sale_price|
   expect(@chair.promo_price).to eq sale_price
 end
 
-And(/^the promo should be valid$/) do 
-  expect(@chair.valid?).to eq true
+And(/^the promo should be (\w+)$/) do |boolean|
+  class String
+    def to_bool
+      self == 'true'
+    end
+  end
+  expect(@chair.valid?).to eq boolean.to_bool
 end
 
 # When(/^the promotion runs for (\d+) days$/) do |days|
